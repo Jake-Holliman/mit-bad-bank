@@ -1,5 +1,5 @@
-Project Title: Big-Bad Bank
-Description/Motivation: This is a tiered banking application for my MIT xpro capstone. Please enjoy! 
+Project Title: The title of your project.
+Description/Motivation: This is a three tiered banking website used for my capstone for the MIT xpro Web Development program.
 Installation Guidelines: Clear instructions on how to get your project up and running (e.g., git clone, git pull, npm init).
 Screenshots: Screenshots or a GIF of your project in action.
 Technology used: Your technology stack, listed out. 
