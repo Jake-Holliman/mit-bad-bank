@@ -1,216 +1,208 @@
 var ui = {};
 
-ui.navigation = `
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-<a class="navbar-brand" href="#">
-<img src="bank.png" width="30" height="30" class="d-inline-block align-top" alt=""/>
-Bad Bank by Rajesh
-</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link" href="#" onclick="loadCreateAccount()" >Create Account</a>
-      <a class="nav-item nav-link" href="#" onclick="loadLogin()" >Login</a>
-      <a class="nav-item nav-link" href="#" onclick="loadDeposit()" >Deposit</a>
-      <a class="nav-item nav-link" href="#" onclick="loadWithdraw()" >Withdraw</a>
-      <a class="nav-item nav-link" href="#" onclick="loadTransactions()" >Transaction</a>
-      <a class="nav-item nav-link" href="#" onclick="loadBalance()" >Balance</a>
-      <a class="nav-item nav-link" href="#" onclick="loadAllData()" >AllData</a>
-    </div>
-  </div>
+
+ ui.navigation = `
+ <nav aria-label="breadcrumb">
+  <ol class="breadcrumb arr-right bg-body">
+    <li class="breadcrumb-item"><a href="#" onclick="defaultModule()">BadBank</a></li>
+    <li class="breadcrumb-item"><a href="#" onclick="loadCreateAccount()">Create Account</a></li>
+    <li class="breadcrumb-item"><a href="#" onclick="loadLogin()">Login</a></li>
+    <li class="breadcrumb-item"><a href="#" onclick="loadDeposit()">Deposit</a></li>
+    <li class="breadcrumb-item"><a href="#" onclick="loadWithdraw()">Withdraw</a></li>
+    <li class="breadcrumb-item"><a href="#" onclick="loadTransactions()">Transaction</a></li>
+    <li class="breadcrumb-item"><a href="#" onclick="loadBalance()">Balance</a></li>
+    <li class="breadcrumb-item"><a href="#" onclick="loadAllData()">AllData</a></li>
+  </ol>
 </nav>
 `;
 
+
 ui.createAccount = `
-    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-        <div class="card-header">Create Account</div>
-        <div class="card-body">
-            <form>
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter Name">
-                </div>
-                <div class="form-group">
-                    <label for="email">Email address</label>
-                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter Email">
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Enter Password">
-                </div>
-                <button type="button" class="btn btn-light" onclick="create()">Create Account</button>
-            </form>
+<div class="card text-white bg-primary mb-5 " style="max-width: 18rem;">
+ <div class="card-header">Create a Big Account</div>
+    <div class="card-body">
+     <form>
+        <div class="form-group">
+         <label for="name">Name</label>
+         <input type="text" class="form-control" id="name" placeholder="Enter name">
         </div>
+        <div class="form-group">
+         <label for="email">Email address</label>
+         <input type="email" class="form-control" id="email" placeholder="email@BigBank.com">
+        </div>
+        <div class="form-group">
+         <label for="password">Password</label>
+         <input type="password" class="form-control" id="password" placeholder="Enter Password">
+        </div>
+        <div class="form-group" "col-sm-10">
+         <button type="button" class="btn btn-light btn-sm" onclick="Create()">Create Account</button>
+        </div>
+        <div id ='createstatus'></div>
+      </form>
     </div>
+</div>
 `;
 
 ui.login = `
-<div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
-<div class="card-header">Login</div>
-<div class="card-body">
-    <form>
-        <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter Email">
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" id="password" placeholder="Enter Password">
-        </div>
-        <button type="button" class="btn btn-light" onclick="login()">Login</button>
-    </form>
-</div>
+<div class="card text-white bg-secondary mb-3 " style="max-width: 18rem;">
+ <div class="card-header">Login</div>
+    <div class="card-body">
+        <form>
+            <div class="form-group">
+                <label for="email1">Email address</label>
+                <input type="email" class="form-control" id="loginEmail" placeholder="email@example.com">
+            </div>
+            <div class="form-group">
+                <label for="password1">Password</label>
+                 <input type="password" class="form-control" id="loginPassword" placeholder="Enter Password">
+            </div>
+            <div class="form-group" "col-sm-10">
+                <button type="button" class="btn btn-light btn-sm" onclick="Login()">Login</button>
+            </div>
+            <div id ='loginstatus'></div>
+        </form>
+    </div>
 </div>
 `;
 
 ui.deposit = `
-    <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
-        <div class="card-header">Deposit</div>
-        <div class="card-body">
-            <form>
-                <div class="form-group">
-                    <label for="email">Email address</label>
-                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
-                </div>
-                <div class="form-group">
-                    <label for="amount">Amount</label>
-                    <input type="number" min="0" class="form-control" id="amount" placeholder="Amount">
-                </div>
-                <button type="button" class="btn btn-light" onclick="deposit()">Deposit</button>
-            </form>
-        </div>
-    </div>
-`;
-
-ui.withdraw = `
-<div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
-    <div class="card-header">Withdraw</div>
+<div class="card text-white bg-warning mb-3 " style="max-width: 18rem;">
+ <div class="card-header">Deposit</div>
     <div class="card-body">
         <form>
             <div class="form-group">
-                <label for="email">Email address</label>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                <label for="email1">Email address</label>
+                <input type="email" class="form-control" id="depositEmail" placeholder="email@example.com">
             </div>
             <div class="form-group">
-                <label for="amount">Amount</label>
-                <input type="number" min="0" class="form-control" id="amount" placeholder="Amount">
+                <label for="amount1">Amount</label>
+                <input type="Amount" class="form-control" id="depositAmount" placeholder="Enter amount">
             </div>
-            <button type="button" class="btn btn-light" onclick="withdraw()">Withdraw</button>
+            <div class="form-group" "col-sm-10">
+                <button type="button" class="btn btn-light btn-sm" onclick="Deposit()">Deposit</button>
+            </div>
+            <div id ='depositstatus'></div>   
+        </form>
+    </div>
+</div>
+`;
+
+ui.withdraw = `
+<div class="card text-white bg-success mb-3 " style="max-width: 18rem;">
+ <div class="card-header">Withdraw</div>
+    <div class="card-body">
+      <form>
+            <div class="form-group">
+                <label for="email1">Email address</label>
+                <input type="email" class="form-control" id="withdrawEmail" placeholder="email@example.com">
+            </div>
+            <div class="form-group">
+                <label for=" amount1">Amount</label>
+                <input type="Amount" class="form-control" id="withdrawAmount" placeholder="Enter amount">
+            </div>
+            <div class="form-group" "col-sm-10">
+                <button type="button" class="btn btn-light btn-sm" onclick="Withdraw()">Submit</button>
+            </div> 
+            <div id ='withdrawstatus'></div> 
         </form>
     </div>
 </div>
 `;
 
 ui.transactions = `
-<div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-    <div class="card-header">Transactions</div>
+<div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+  <div class="card-header">Transactions</div>
     <div class="card-body">
         <form>
             <div class="form-group">
-                <label for="email">Email address</label>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                <label for="email1">Email address</label>
+                <input type="email" class="form-control" id="transactionEmail" placeholder="email@example.com">
             </div>
-            <button type="button" class="btn btn-light" onclick="transactions()">Show Transactions</button>
+            <div class="form-group" "col-sm-10">
+                <button type="button" class="btn btn-light btn-sm" onclick="Transactions()">Show Transactions</button>
+            </div>
+            <div id ='transactionstatus'></div>      
         </form>
     </div>
-</div> 
+</div>
 `;
 
 ui.balance = `
 <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-    <div class="card-header">Balance</div>
+  <div class="card-header">Transactions</div>
     <div class="card-body">
         <form>
             <div class="form-group">
-                <label for="email">Email address</label>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                <label for="email1">Email address</label>
+                <input type="email" class="form-control" id="balanceEmail" placeholder="email@example.com">
             </div>
-            <button type="button" class="btn btn-light" onclick="balance()">Show Balance</button>
+            <div class="form-group" "col-sm-10">
+                <button type="button" class="btn btn-light btn-sm" onclick="Balance()">Show Balance</button>
+            </div>
+            <div id ='balancestatus'></div>
         </form>
     </div>
-</div> 
+</div>
 `;
 
 ui.default = `
-    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-        <div class="card-header">Welcome</div>
-        <div class="card-body">
-            <p class="card-text">Welcome to the Bad Bank by Rajesh Ramatchandran. This is the result of the MIT Digital Transformation Online Course. I'm happy to spend your money :-). Merry Christmas and a Happy New Year</p>
-        </div>
+<div class="card bg-light mb-2" style="max-width:18rem;">
+  <div class="card-header">BadBank Landing Module</div>
+    <div class="card-body">
+        <h5 class="card-title">Welcome to the bank</h5>
+        <p class="card-text">You can move around using navigation bar.</p>
+        <img class ="card-img-top" src="bank.png" alt="Card image">
     </div>
+</div>
 `;
+
 
 ui.allData = `
-<div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
-    <div class="card-header">All Bank Data</div>
-    <div class="card-body">
-        <form>
-            <button type="button" class="btn btn-light" onclick="allData()">Show All Bank Data</button>
-        </form>
+<p class= "font-weight-bold ">All Data in Store</p>
+<form>
+    <div class="form-group" "ml-5">
+        <button type="button" class="btn btn-secondary btn-sm" onclick="AllData()">Show All Data</button>
     </div>
-</div> 
+    <div id ='AllDatastatus'></div>
+<form>
 `;
 
-ui.content = `
-<div class="card border-light mb-3" style="max-width: 80rem;">
-    <div class="card-header">Output</div>
-    <div class="card-body">
-        <form>
-            <textarea rows="8" cols="120" id="output">
-            </textarea>
-        </form>
-    </div>
-</div> 
-`;
-
-var target = document.getElementById('target');
+var target     = document.getElementById('target');
 var navigation = document.getElementById('navigation');
-var content = document.getElementById('content');
+
 navigation.innerHTML += ui.navigation;
-content.innerHTML += ui.content;
 
-
-
-var loadCreateAccount = function () {
+var loadCreateAccount = function (){
     target.innerHTML = ui.createAccount;
-    document.getElementById('output').value = "";
 };
 
-var loadLogin = function () {
+var loadLogin = function (){
     target.innerHTML = ui.login;
-    document.getElementById('output').value = "";
 };
 
-var loadDeposit = function () {
+var loadDeposit = function (){
     target.innerHTML = ui.deposit;
-    document.getElementById('output').value = "";
 };
 
-var loadWithdraw = function () {
+var loadWithdraw = function (){
     target.innerHTML = ui.withdraw;
-    document.getElementById('output').value = "";
 };
 
-var loadTransactions = function () {
+var loadTransactions = function (){
     target.innerHTML = ui.transactions;
-    document.getElementById('output').value = "";
 };
 
-var loadBalance = function () {
+var loadBalance = function (){
     target.innerHTML = ui.balance;
-    document.getElementById('output').value = "";
 };
 
-var defaultModule = function () {
+var defaultModule = function (){
     target.innerHTML = ui.default;
-    document.getElementById('output').value = "";
 };
 
-var loadAllData = function () {
+var loadAllData = function (){
     target.innerHTML = ui.allData;
-    document.getElementById('output').value = "";
 };
+
 
 defaultModule();
